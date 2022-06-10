@@ -40,13 +40,13 @@ def get_csv_entries(csv_filepath, fields=nil)
         all_fields = fields[:string_fields]
         valid_field_indices = 0..max_field_idx
     else
-        unless fields.include? :string_fields
+        unless fields.include?(:string_fields)
             fields[:string_fields] = Set.new
         end
-        unless fields.include? :int_fields
+        unless fields.include?(:int_fields)
             fields[:int_fields] = Set.new
         end
-        unless fields.include? :float_fields
+        unless fields.include?(:float_fields)
             fields[:float_fields] = Set.new
         end
         all_fields = fields[:string_fields] + fields[:int_fields] + fields[:float_fields]
@@ -64,9 +64,9 @@ def get_csv_entries(csv_filepath, fields=nil)
         values = file_enumerator.next.chomp().split(',')
         entry = {}
         valid_field_indices.each do |i|
-            if fields[:int_fields].include? headers[i]
+            if fields[:int_fields].include?(headers[i])
                 entry[headers[i]] = values[i].to_i
-            elsif fields[:float_fields].include? headers[i]
+            elsif fields[:float_fields].include?(headers[i])
                 entry[headers[i]] = values[i].to_f
             else
                 entry[headers[i]] = values[i]
