@@ -8,7 +8,7 @@ This is a little practice project I made to learn Ruby.  It's a CLI tool that re
 ## Samples & Example Command
 In the `samples/` directory you can find sample CSVs matching the `user` and `business` types, as well as a miscellaneous CSV to see how `user` and `business` types filter its fields, and how the `generic` type does not.  For example:
 ```bash
-bash-3.2$ ruby csv_reader-reader.rb user samples/users.csv
+bash-3.2$ ruby csv_reader.rb user samples/users.csv
 {"name"=>"David", "age"=>32, "height"=>173, "weight"=>152.3}
 {"name"=>"Susan", "age"=>44, "height"=>161, "weight"=>210.9}
 {"name"=>"Katie", "age"=>31, "height"=>170, "weight"=>144.5}
