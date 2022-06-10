@@ -6,7 +6,7 @@ This is a little practice project I made to learn Ruby.  It's a CLI tool that re
 2. Run `ruby csv_reader.rb CSV_TYPE CSV_FILEPATH`
 
 ## Samples & Example Command
-You can find sample CSVs matching the `user` and `business` types, as well as a miscellaneous CSV to see how `user` and `business` types filter its fields, and how the `generic` type does not.  For example:
+In the `samples/` directory you can find sample CSVs matching the `user` and `business` types, as well as a miscellaneous CSV to see how `user` and `business` types filter its fields, and how the `generic` type does not.  For example:
 ```bash
 bash-3.2$ ruby csv_reader-reader.rb user samples/users.csv
 {"name"=>"David", "age"=>32, "height"=>173, "weight"=>152.3}
