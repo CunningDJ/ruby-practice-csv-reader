@@ -14,9 +14,11 @@ CSV_FIELDS = {
     generic: {}
 }
 
+_VALID_CSV_TYPENAMES = CSV_FIELDS.keys.map{|key| key.to_s}
+
 def main(csv_filepath, csv_type)
     unless CSV_FIELDS.include? csv_type
-        puts "ERROR: Invalid csv type. Must be one of: #{CSV_FIELDS.keys.map{|key| key.to_s}}"
+        puts "ERROR: Invalid csv type. Must be one of: #{_VALID_CSV_TYPENAMES}"
         exit(1)
     end
     fields = CSV_FIELDS[csv_type]
@@ -25,7 +27,6 @@ end
 
 # Utility methods
 def get_csv_entries(csv_filepath, fields=nil)
-    # string_fields=nil, int_fields=nil, float_fields=nil)
     file_enumerator = File.foreach(csv_filepath)
     headers = file_enumerator.next.chomp().split(',')
     max_field_idx = headers.length - 1
@@ -78,6 +79,10 @@ end
 
 # RUNNING MAIN
 if __FILE__ == $0
+    if ARGV.length != 2
+        puts "Usage: csv_reader.rb CSV_TYPE CSV_FILEPATH\n\tCSV_TYPE The type of CSV to process.  Valid values: #{_VALID_CSV_TYPENAMES}\n\tCSV_FILEPATH The file path of the CSV to process"
+        exit(1)
+    end
     csv_type = ARGV[0]
     csv_filepath = ARGV[1]
     main(csv_filepath, csv_type.to_sym)
